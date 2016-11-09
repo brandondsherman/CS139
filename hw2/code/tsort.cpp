@@ -36,7 +36,6 @@ void FixIndices();
 int* Merge(int arr[], int finalArr[]);
 void Swap(int& x, int& y);
 int Rand(int x, int y);
-//int IsSorted(int[], int);
 int IsSorted(int arr[]);
 void printArray(int arr[]);
 
@@ -331,7 +330,7 @@ int main(int argc, char* argv[]){
 
    //read and set array size
    int tempArraySize = atoi(argv[1]);
-   if ((tempArraySize <= 1 || tempArraySize >=100000000) && (sizeof(tempArraySize) != sizeof(size_t)))
+   if ((tempArraySize <= 1 || tempArraySize >=1000000000) && (sizeof(tempArraySize) != sizeof(size_t)))
    {
      printf("Your array size is out of range, exiting");
      exit(0);
@@ -453,11 +452,15 @@ int main(int argc, char* argv[]){
       exit(0);
     }
   }
-  for (int i = 0; i < threadCount; i++){
+  
+  //join threads after children have completed
+   for (int i = 0; i < threadCount; i++){
     pthread_join(threads[i],NULL);
   }
   
   Merge(threadedArray,copyArray);
+  
+  //end time
   gRefTime = GetTime();
   
   printf("Mutlithreaded time: %ld\n", gRefTime);
