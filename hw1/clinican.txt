@@ -1,0 +1,18 @@
+1.
+check kmalloc pointer, whether or not it's null. Handle the exception
+compare function-
+  check if null
+simple exit, delete * for all structs
+list_for_each_space in exit
+kfree, and then set it to null that will erase data after done
+
+kfree(pointer*) 
+pointer* = null
+
+2. 
+check return value of pthread_create
+zero out the data at the end
+memset = 0 for that many bytes
+handle odd number of threads
+
+
